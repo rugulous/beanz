@@ -15,10 +15,13 @@ import java.util.Calendar
 import java.util.Locale
 import android.widget.RadioButton
 import androidx.cardview.widget.CardView
+import com.rugulous.beanz.domain.AccountBuilder
+import com.rugulous.beanz.domain.AccountType
 
 
 class AddAccountActivity : AppCompatActivity() {
     private val calendar : Calendar = Calendar.getInstance()
+    private val accountBuilder = AccountBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +33,16 @@ class AddAccountActivity : AppCompatActivity() {
     private fun initEventHandlers(){
         val maturityDate : TextView = findViewById(R.id.new_account_maturity)
         val accountType : RadioGroup = findViewById(R.id.account_type)
+        val step2 : CardView = findViewById(R.id.add_step_2)
 
         accountType.setOnCheckedChangeListener { group, checkedId ->
-            val step2 : CardView = findViewById(R.id.add_step_2)
+            val type = AccountType.values()[checkedId]
+            accountBuilder.Type(type)
+
+            if(step2.visibility == View.VISIBLE){
+                return@setOnCheckedChangeListener
+            }
+
             Utils.fadeIn(step2)
         }
 
@@ -42,7 +52,7 @@ class AddAccountActivity : AppCompatActivity() {
             dpd.show()
         }
     }
-
+    
     private fun onDateChosen(v : View, year : Int, monthOfYear : Int, dayOfMonth: Int){
         if(v !is TextView){
             return
@@ -53,6 +63,6 @@ class AddAccountActivity : AppCompatActivity() {
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.UK)
-        v.text = "Maturity date: " + dateFormat.format(calendar.time)
+        v.text = "Maturity date: ${dateFormat.format(calendar.time)}"
     }
 }
