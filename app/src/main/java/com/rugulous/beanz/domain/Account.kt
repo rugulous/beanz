@@ -15,7 +15,7 @@ class Account(override val name : String, override val interestRate : Float) : I
     }
 }
 
-class NoticeAccount(override val name: String, override val interestRate: Float, val termType : TermType, val termDuration : Long) : IAccount{
+class NoticeAccount(override val name: String, override val interestRate: Float, private val termType : TermType, private val termDuration : Long) : IAccount{
     override fun getAccessDate(): LocalDate {
         val date: LocalDate = LocalDate.now()
 
@@ -28,5 +28,11 @@ class NoticeAccount(override val name: String, override val interestRate: Float,
         }
 
         return date.plusYears(termDuration)
+    }
+}
+
+class FixedTermAccount(override val name: String, override val interestRate: Float, private val termEndDate: LocalDate) : IAccount{
+    override fun getAccessDate(): LocalDate {
+        return termEndDate
     }
 }
