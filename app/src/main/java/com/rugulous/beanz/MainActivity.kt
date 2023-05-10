@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private fun delayedOpenNextActivity(){
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, AddAccountActivity::class.java))
+            finish()
         }, DELAY_TIMER)
     }
 }
