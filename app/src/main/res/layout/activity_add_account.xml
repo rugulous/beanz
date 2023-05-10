@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?colorPrimaryVariant">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimaryVariant"
         android:orientation="vertical"
         android:paddingStart="20dp"
         android:paddingTop="20dp"
@@ -44,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:id="@+id/account_type">
 
                     <RadioButton
                         android:layout_width="0dp"
@@ -76,10 +77,12 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:id="@+id/add_step_2"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
-            app:contentPadding="20dp"
-            android:layout_marginBottom="20dp">
+            app:contentPadding="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,8 +163,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
@@ -188,7 +191,7 @@
                     android:id="@+id/new_account_maturity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:visibility="gone"
                     android:hint="Maturity Date"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
             </LinearLayout>
@@ -198,6 +201,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="Save" />
 
     </LinearLayout>
