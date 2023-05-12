@@ -91,7 +91,6 @@
                 android:paddingTop="20dp">
 
                 <TextView
-                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -111,6 +110,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/new_account_name"
                         android:hint="Account Name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Interest Rate (%)"
+                        android:id="@+id/new_account_interest"
                         android:inputType="number|numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +134,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:id="@+id/new_account_access">
 
                     <RadioButton
                         android:layout_width="0dp"
@@ -164,7 +166,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:id="@+id/new_account_notice">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
@@ -198,7 +201,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/create_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"

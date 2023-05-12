@@ -5,11 +5,25 @@ import java.time.LocalDate
 
 class AccountBuilder {
     private var accountType: AccountType? = null
+    private var name: String = ""
+    private var interestRate: Float? = null
     private var accountAccessType: AccountAccessType? = null
     private var maturityDate : LocalDate? = null
+    private var termType : TermType? = null
+    private var termDuration : Int? = null
 
     fun accountType(type: AccountType): AccountBuilder{
         this.accountType = type
+        return this
+    }
+
+    fun name(name: String): AccountBuilder{
+        this.name = name
+        return this
+    }
+
+    fun interestRate(rate: Float?): AccountBuilder{
+        this.interestRate = rate
         return this
     }
 
@@ -24,7 +38,15 @@ class AccountBuilder {
     }
 
     fun canBuild(): Boolean{
-        if(accountType == null || accountAccessType == null){
+        if(accountType == null || accountAccessType == null || name.isBlank() || interestRate == null){
+            return false
+        }
+
+        if(accountAccessType == AccountAccessType.FIXED_TERM && maturityDate == null){
+            return false
+        }
+
+        if(accountAccessType == AccountAccessType.NOTICE && (termDuration == null || termType == null)){
             return false
         }
 
